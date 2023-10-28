@@ -5,10 +5,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Switch;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class MainActivity extends AppCompatActivity {
+
+    private final static Logger LOGER = Logger.getLogger(MainActivity.class.getName());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,16 +24,21 @@ public class MainActivity extends AppCompatActivity {
     public void styleThem(View view) {
         Switch sw = findViewById(R.id.styleTheme);
         if (sw.isChecked()) {
-            Logger.getLogger("main").log(Level.ALL, "checked");
-            getApplication().setTheme(android.R.style.Theme_Holo);
-        } else {
-            Logger.getLogger("main").log(Level.ALL, "checked");
+            LOGER.log(Level.ALL, "Light theme");
             getApplication().setTheme(android.R.style.Theme_Black);
+            getApplication().setTheme(R.style.Theme_MyApplication);
+            setTheme(R.style.Base_Theme_MyApplication);
+        } else {
+            LOGER.log(Level.ALL, "Dark theme");
+            setTheme(android.R.style.Theme_Black);
         }
     }
-    public void door(View view) {
+    public void door(View view) throws JSONException {
         Switch sw = findViewById(R.id.door);
+        JSONObject json = new JSONObject("{\"status\":\"true\"}");
+        sw.setChecked(json.getBoolean("status"));
         if (sw.isChecked()) {
+
             //дверь открыть
         } else {
             //дверь закрыть
