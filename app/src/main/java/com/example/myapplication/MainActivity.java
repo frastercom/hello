@@ -1,6 +1,8 @@
 package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Switch;
@@ -23,14 +25,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void styleThem(View view) {
         Switch sw = findViewById(R.id.styleTheme);
-        if (sw.isChecked()) {
+        if (!sw.isChecked()) {
             LOGER.log(Level.ALL, "Light theme");
-            getApplication().setTheme(android.R.style.Theme_Black);
-            getApplication().setTheme(R.style.Theme_MyApplication);
-            setTheme(R.style.Base_Theme_MyApplication);
+            //добавлена смена ночного режима (темной темы)
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         } else {
             LOGER.log(Level.ALL, "Dark theme");
-            setTheme(android.R.style.Theme_Black);
+            //добавлена смена ночного режима (темной темы)
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         }
     }
     public void door(View view) throws JSONException {
