@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         //Получаем компонент с формы
         Switch sw = findViewById(R.id.door);
         //получаем статус с сервера и устанавливаем его значение
-        sw.setChecked(Objects.equals("OPEN", getValueServer("/arduino/door")));
+        sw.setChecked(Objects.equals("open", getValueServer("/arduino/door")));
     }
 
     public void styleThem(View view) {
