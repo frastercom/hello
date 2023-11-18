@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
 import android.widget.Switch;
+import android.widget.TextView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -39,9 +40,16 @@ public class MainActivity extends AppCompatActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         //Получаем компонент с формы
-        Switch sw = findViewById(R.id.door);
+        Switch swDoor = findViewById(R.id.door);
         //получаем статус с сервера и устанавливаем его значение
-        sw.setChecked(Objects.equals("open", getValueServer("/arduino/door")));
+        swDoor.setChecked(Objects.equals("open", getValueServer("/arduino/door")));
+        Switch swLight = findViewById(R.id.light);
+        //получаем статус с сервера и устанавливаем его значение
+        swLight.setChecked(Objects.equals("on", getValueServer("/arduino/light")));
+
+        TextView temp = findViewById(R.id.temp);
+        //получаем статус с сервера и устанавливаем его значение
+        temp.setText(getTempServer()+"°C");
     }
 
     public void styleThem(View view) {
@@ -74,8 +82,10 @@ public class MainActivity extends AppCompatActivity {
         Switch sw = findViewById(R.id.light);
         if (sw.isChecked()) {
             //включить свет
+            setValueServer("/arduino/light", "on");
         } else {
             //выключить свет
+            setValueServer("/arduino/light", "off");
         }
     }
 
@@ -91,6 +101,24 @@ public class MainActivity extends AppCompatActivity {
             if (response.isSuccessful()) {
                 JSONObject json = new JSONObject(response.body().string());
                 value = json.getString("status");
+            }
+        } catch (Exception e) {
+            //игнорируем ошибку
+        }
+        return value;
+    }
+
+    public String getTempServer() {
+        String value = null;
+        OkHttpClient client = new OkHttpClient();
+
+        Request request = new Request.Builder()
+                .url(BASIC_URL.concat("/arduino/temp"))
+                .build();
+        try (Response response = client.newCall(request).execute()) {
+            if (response.isSuccessful()) {
+                JSONObject json = new JSONObject(response.body().string());
+                value = json.getString("size");
             }
         } catch (Exception e) {
             //игнорируем ошибку

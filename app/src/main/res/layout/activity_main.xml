@@ -55,6 +55,7 @@
         android:layout_height="28dp"
         android:text="Свет"
         android:textAlignment="center"
+        android:onClick="light"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -64,10 +65,11 @@
         app:layout_constraintVertical_bias="0.304" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/temp"
         android:layout_width="117dp"
         android:layout_height="52dp"
         android:text="TextView"
+        android:textSize="20sp"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
