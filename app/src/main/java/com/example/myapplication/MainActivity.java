@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.example.myapplication.service.ArduinoConnection;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -69,12 +71,13 @@ public class MainActivity extends AppCompatActivity {
         Switch sw = findViewById(R.id.door);
         if (sw.isChecked()) {
             //отправляем запрос на сервер для установки статуса закрытия двери
-            setValueServer("/arduino/door", "open");
-            //дверь открыть
+            setValueServer("/arduino/door", "open"); //дверь открыть server
+            ArduinoConnection.getValue("/DOOR=OPEN"); //arduino wifi
         } else {
             //дверь закрыть
             //отправляем запрос на сервер для установки статуса закрытия двери
-            setValueServer("/arduino/door", "close");
+            setValueServer("/arduino/door", "close"); //дверь закрыть server
+            ArduinoConnection.getValue("/DOOR=CLOSE"); //arduino wifi
         }
     }
 
@@ -82,10 +85,12 @@ public class MainActivity extends AppCompatActivity {
         Switch sw = findViewById(R.id.light);
         if (sw.isChecked()) {
             //включить свет
-            setValueServer("/arduino/light", "on");
+            setValueServer("/arduino/light", "on"); //свет включить server
+            ArduinoConnection.getValue("/LED=ON");//arduino wifi
         } else {
             //выключить свет
-            setValueServer("/arduino/light", "off");
+            setValueServer("/arduino/light", "off"); // свет выключить server
+            ArduinoConnection.getValue("/LED=OFF"); // arduino wifi
         }
     }
 
