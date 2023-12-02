@@ -16,8 +16,8 @@ import okhttp3.Response;
 public class ServerConnection {
     public final static String BASIC_URL = "https://simple-service.ddns.net"; //Базовый адрес сервера
 
-    public static String getValueServer(String api) {
-        String value = null;
+    public static String getValueServer(String api) { //Запрос на сервер
+        String value = null; //Устанавливается начальное значение показателя температуры
         OkHttpClient client = new OkHttpClient();
 
         Request request = new Request.Builder()
@@ -28,18 +28,18 @@ public class ServerConnection {
                 JSONObject json = new JSONObject(response.body().string());
                 value = json.getString("status");
             }
-        } catch (Exception e) {
-            //игнорируем ошибку
+        } catch (Exception e) { //игнорируем ошибку
+
         }
-        return value;
+        return value;//В случае ошибки возвращаемся к исходному значению value
     }
     //GET запрос для получения данных с сервера
 
     public static String setValueServer(String api, String status) {
-        String value = null;
+        String value = null;//Устанавливается начальное значение показателя температуры
         OkHttpClient client = new OkHttpClient();
         MediaType JSON = MediaType.get("application/json; charset=utf-8");
-        RequestBody body = RequestBody.create(String.format("{\"status\":\"%s\"}", status), JSON);
+        RequestBody body = RequestBody.create(String.format("{\"status\":\"%s\"}", status), JSON); //Устанавливается формат в виде JSON
         Request request = new Request.Builder()
                 .url(BASIC_URL.concat(api))
                 .post(body)
@@ -49,15 +49,15 @@ public class ServerConnection {
                 JSONObject json = new JSONObject(response.body().string());
                 value = json.getString("status");
             }
-        } catch (Exception e) {
+        } catch (Exception e) {//игнорируем ошибку
             e.toString();
-            //игнорируем ошибку
-        }
-        return value;
-    }
-    //POST запрос для записи данных на сервер
 
-    public static String getTempServer() {
+        }
+        return value;//В случае ошибки возвращаемся к исходному значению value
+    }
+
+    //POST запрос для записи данных на сервер
+    public static String getTempServer() {//Метод вывода показаний температуры на сервер
         String value = null;
         OkHttpClient client = new OkHttpClient();
 
@@ -69,10 +69,10 @@ public class ServerConnection {
                 JSONObject json = new JSONObject(response.body().string());
                 value = json.getString("size");
             }
-        } catch (Exception e) {
-            //игнорируем ошибку
+        } catch (Exception e) { //игнорируем ошибку
+
         }
-        return value;
+        return value;//В случае ошибки возвращаемся к исходному значению value
     }
     //вывод показателей температуры на сервер
 }

@@ -81,14 +81,14 @@
 
     <Switch
         android:id="@+id/connectionMethod"
-        android:layout_width="216dp"
-        android:layout_height="62dp"
+        android:layout_width="130dp"
+        android:layout_height="59dp"
         android:onClick="connection"
-        android:text="Подключение"
+        android:text="Связь"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.082"
+        app:layout_constraintHorizontal_bias="0.101"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.023" />

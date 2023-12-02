@@ -22,12 +22,12 @@ public class ArduinoConnection {
     public static void setValue(String api, String status) {
 
         OkHttpClient client = new OkHttpClient.Builder()
-                .connectTimeout(200, TimeUnit.MILLISECONDS)
-                .writeTimeout(200, TimeUnit.MILLISECONDS)
-                .readTimeout(200, TimeUnit.MILLISECONDS)
+                .connectTimeout(200, TimeUnit.MILLISECONDS)//Устанавливается тайм-аут на соединение
+                .writeTimeout(200, TimeUnit.MILLISECONDS)//Устанавливается тайм-аут на написание
+                .readTimeout(200, TimeUnit.MILLISECONDS)//Устанавливается тайм-аут на чтение
                 .build();
         MediaType JSON = MediaType.get("application/json; charset=utf-8");
-        RequestBody body = RequestBody.create(String.format("{\"status\":\"%s\"}", status), JSON);
+        RequestBody body = RequestBody.create(String.format("{\"status\":\"%s\"}", status), JSON);//Устанавливается формат в виде JSON
         Request request = new Request.Builder()
                 .url(BASIC_URL.concat(api))
                 .post(body)
@@ -37,9 +37,9 @@ public class ArduinoConnection {
                 JSONObject json = new JSONObject(response.body().string());
                 String value = json.getString("status");
             }
-        } catch (Exception e) {
+        } catch (Exception e) {//игнорируем ошибку
             e.toString();
-            //игнорируем ошибку
+
         }
     }
 
@@ -52,9 +52,9 @@ public class ArduinoConnection {
     public static String getValue(String api) {
         String value = null;
         OkHttpClient client = new OkHttpClient.Builder()
-                .connectTimeout(200, TimeUnit.MILLISECONDS)
-                .writeTimeout(200, TimeUnit.MILLISECONDS)
-                .readTimeout(200, TimeUnit.MILLISECONDS)
+                .connectTimeout(200, TimeUnit.MILLISECONDS)//Устанавливается тайм-аут на соединение
+                .writeTimeout(200, TimeUnit.MILLISECONDS)//Устанавливается тайм-аут на написание
+                .readTimeout(200, TimeUnit.MILLISECONDS)//Устанавливается тайм-аут на чтение
                 .build();
 
         Request request = new Request.Builder()
@@ -65,8 +65,8 @@ public class ArduinoConnection {
                 JSONObject json = new JSONObject(response.body().string());
                 value = json.getString("status");
             }
-        } catch (Exception e) {
-            //игнорируем ошибку
+        } catch (Exception e) {//игнорируем ошибку
+
         }
         return value;
     }

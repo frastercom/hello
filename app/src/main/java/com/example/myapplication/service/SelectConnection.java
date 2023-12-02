@@ -11,7 +11,7 @@ public class SelectConnection {
         this.serverConnection = serverConnection;
     }
 
-    public void lightOn() {
+    public void lightOn() {//Метод включения света
         if (serverConnection) {
             ServerConnection.setValueServer("/arduino/light", "on"); //свет включить server
         } else {
@@ -19,7 +19,7 @@ public class SelectConnection {
         }
     }
 
-    public void LightOff() {
+    public void LightOff() {//Метод выключения света
         if (serverConnection) {
             ServerConnection.setValueServer("/arduino/light", "off"); // свет выключить server
         } else {
@@ -27,7 +27,7 @@ public class SelectConnection {
         }
     }
 
-    public void DoorOpen() {
+    public void DoorOpen() {//Метод открытия двери
         if(serverConnection){
             ServerConnection.setValueServer("/arduino/door", "open"); //дверь открыть server
         }else{
@@ -35,7 +35,7 @@ public class SelectConnection {
         }
     }
 
-    public void DoorClose() {
+    public void DoorClose() {//Метод закрытия двери
         if(serverConnection){
             ServerConnection.setValueServer("/arduino/door", "close"); //дверь закрыть server
         }else{
