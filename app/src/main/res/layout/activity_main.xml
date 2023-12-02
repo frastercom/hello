@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/connection"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
@@ -35,27 +36,12 @@
         app:layout_constraintVertical_bias="0.023" />
 
     <Switch
-        android:id="@+id/connectionMethod"
-        android:layout_width="650dp"
-        android:layout_height="60dp"
-        android:onClick="styleThem"
-        android:text="Способ"
-        android:textAlignment="center"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.900"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
-
-    <Switch
         android:id="@+id/door"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="door"
         android:text="Входная дверь"
         android:textAlignment="textEnd"
-        android:onClick="door"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -68,9 +54,9 @@
         android:id="@+id/light"
         android:layout_width="105dp"
         android:layout_height="28dp"
+        android:onClick="light"
         android:text="Свет"
         android:textAlignment="center"
-        android:onClick="light"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -84,13 +70,27 @@
         android:layout_width="117dp"
         android:layout_height="52dp"
         android:text="TextView"
-        android:textSize="20sp"
         android:textAlignment="center"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintVertical_bias="0.506" />
+
+    <Switch
+        android:id="@+id/connectionMethod"
+        android:layout_width="216dp"
+        android:layout_height="62dp"
+        android:onClick="connection"
+        android:text="Подключение"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.082"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

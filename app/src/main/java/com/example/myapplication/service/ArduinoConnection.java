@@ -15,7 +15,8 @@ public class ArduinoConnection {
 
     /**
      * записываем значение
-     * @param api адрес
+     *
+     * @param api    адрес
      * @param status значение датчиков
      */
     public static void setValue(String api, String status) {
@@ -44,6 +45,7 @@ public class ArduinoConnection {
 
     /**
      * получаем значение по wifi с arduino
+     *
      * @param api адрес
      * @return значение температуры
      */
