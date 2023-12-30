@@ -14,7 +14,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class ServerConnection {
-    public final static String BASIC_URL = "https://simple-service.ddns.net"; //Базовый адрес сервера
+    public final static String BASIC_URL = "http://91.222.236.17:8080"; //Базовый адрес сервера
 
     public static String getValueServer(String api) { //Запрос на сервер
         String value = null; //Устанавливается начальное значение показателя температуры

@@ -1,7 +1,7 @@
 
 boolean modeServer = true; // флаг что ардуино как сервер
 #include <SoftwareSerial.h>
-
+//https://randomnerdtutorials.com/esp8266-nodemcu-http-get-post-arduino/
 // создаём объект для работы с программным Serial
 // и передаём ему пины TX и RX
 SoftwareSerial mySerial(8, 9);
