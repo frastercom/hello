@@ -36,9 +36,22 @@ public class MainActivity extends AppCompatActivity {
         //получаем статус с сервера и устанавливаем его значение
         swLight.setChecked(Objects.equals("on", ServerConnection.getValueServer("/arduino/light")));
 
-        TextView temp = findViewById(R.id.temp);
-        //получаем статус с сервера и устанавливаем его значение
-        temp.setText(ServerConnection.getTempServer() + "°C");
+        //Этот метод будет выполняться в побочном потоке
+        Thread myThready = new Thread(() -> {
+            while (true) {
+                TextView temp = findViewById(R.id.temp);
+                //получаем статус с сервера и устанавливаем его значение
+                temp.setText(ServerConnection.getTempServer() + "°C");
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+        myThready.start();    //Запуск потока
+
+
     }
 
     public void styleThem(View view) { //Смена темы
