@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.Switch;
 import android.widget.TextView;
 
-import com.example.myapplication.service.ArduinoConnection;
 import com.example.myapplication.service.SelectConnection;
 import com.example.myapplication.service.ServerConnection;
 

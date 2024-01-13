@@ -1,11 +1,6 @@
 package com.example.myapplication.service;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import org.json.JSONObject;
-
-import java.util.concurrent.TimeUnit;
-import java.util.logging.Logger;
 
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
