@@ -9,6 +9,8 @@
  * Передает на сервер температуру
  *
  * Программа работает с http запросами типа GET и POST
+ * CH340G driver
+ * NodeMCU 1.0
  */
 
 #include <ESP8266WiFi.h>
@@ -32,9 +34,9 @@ void setup () {
 
     }
  //при инициализации портов, программа работает не корректно, необходимо исправить
-    pinMode(0, OUTPUT);  // D0 как выход
-    pinMode(1, OUTPUT);  // D1 как выход
-    pinMode(A0, INPUT);  // A0 как вход
+//    pinMode(0, OUTPUT);  // D0 как выход
+//    pinMode(1, OUTPUT);  // D1 как выход
+//    pinMode(A0, INPUT);  // A0 как вход
 
 }
 

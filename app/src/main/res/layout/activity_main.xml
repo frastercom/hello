@@ -11,7 +11,7 @@
         android:id="@+id/textView"
         android:layout_width="237dp"
         android:layout_height="89dp"
-        android:text="Привет!"
+        android:text="Старт!"
         android:textAlignment="center"
         android:textSize="60sp"
         app:layout_constraintBottom_toBottomOf="parent"
